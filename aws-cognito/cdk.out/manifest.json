@@ -1,0 +1,120 @@
+{
+  "version": "38.0.1",
+  "artifacts": {
+    "AwsCognitoStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "AwsCognitoStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "AwsCognitoStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "AwsCognitoStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "notificationArns": [],
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/325ed4180b42b275d3712f0c2ca1a711faaed8b673713e1089555156b84bba28.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "AwsCognitoStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "AwsCognitoStack.assets"
+      ],
+      "metadata": {
+        "/AwsCognitoStack/ChurchSlideUserPool/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchSlideUserPool6193FE6F"
+          }
+        ],
+        "/AwsCognitoStack/ChurchSlideUserPool/ChurchSlideUPClientWeb/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchSlideUserPoolChurchSlideUPClientWebFC074C3D"
+          }
+        ],
+        "/AwsCognitoStack/ChurchSlideUserPool/ChurchSlideUPClient/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchSlideUserPoolChurchSlideUPClientD89715AB"
+          }
+        ],
+        "/AwsCognitoStack/ChurchSlideUPClientRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchSlideUPClientRoleE16BA2D0"
+          }
+        ],
+        "/AwsCognitoStack/ChurchSlideUserPoolId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchSlideUserPoolId"
+          }
+        ],
+        "/AwsCognitoStack/ChurchSlideUserPoolArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchSlideUserPoolArn"
+          }
+        ],
+        "/AwsCognitoStack/ChurchSlideAppClientIDWeb": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchSlideAppClientIDWeb"
+          }
+        ],
+        "/AwsCognitoStack/ChurchSlideAppClientID": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchSlideAppClientID"
+          }
+        ],
+        "/AwsCognitoStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/AwsCognitoStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/AwsCognitoStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/AwsCognitoStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "AwsCognitoStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

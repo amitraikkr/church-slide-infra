@@ -1,0 +1,1750 @@
+{
+ "Resources": {
+  "UpdateDownloadsFunctionServiceRoleA9B70BE5": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/UpdateDownloadsFunction/ServiceRole/Resource"
+   }
+  },
+  "UpdateDownloadsFunctionServiceRoleDefaultPolicy02CC0A2C": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:DeleteItem",
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:dynamodb:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":table/UserDetailsStack-UsersTable9725E9C8-1ULUFCS7DFRJM"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "UpdateDownloadsFunctionServiceRoleDefaultPolicy02CC0A2C",
+    "Roles": [
+     {
+      "Ref": "UpdateDownloadsFunctionServiceRoleA9B70BE5"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/UpdateDownloadsFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "UpdateDownloadsFunctionF3C2D957": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "3c68b1ef9c5083145fc503c622601960118d27fa6821eefeee2fd5c2d73825c4.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "USERS_TABLE_NAME": "UserDetailsStack-UsersTable9725E9C8-1ULUFCS7DFRJM"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "UpdateDownloadsFunctionServiceRoleA9B70BE5",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Timeout": 30
+   },
+   "DependsOn": [
+    "UpdateDownloadsFunctionServiceRoleDefaultPolicy02CC0A2C",
+    "UpdateDownloadsFunctionServiceRoleA9B70BE5"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/UpdateDownloadsFunction/Resource",
+    "aws:asset:path": "asset.3c68b1ef9c5083145fc503c622601960118d27fa6821eefeee2fd5c2d73825c4",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "UpdateSubscriptionFunctionServiceRoleC189340B": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/UpdateSubscriptionFunction/ServiceRole/Resource"
+   }
+  },
+  "UpdateSubscriptionFunctionServiceRoleDefaultPolicyE7A220DD": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:DeleteItem",
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:dynamodb:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":table/UserDetailsStack-UsersTable9725E9C8-1ULUFCS7DFRJM"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "UpdateSubscriptionFunctionServiceRoleDefaultPolicyE7A220DD",
+    "Roles": [
+     {
+      "Ref": "UpdateSubscriptionFunctionServiceRoleC189340B"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/UpdateSubscriptionFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "UpdateSubscriptionFunction72CE7B77": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "432a56a489b7e6ad9494678493f7f89f7db62e39b21d5db92cde00768990d5b9.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "USERS_TABLE_NAME": "UserDetailsStack-UsersTable9725E9C8-1ULUFCS7DFRJM"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "UpdateSubscriptionFunctionServiceRoleC189340B",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Timeout": 30
+   },
+   "DependsOn": [
+    "UpdateSubscriptionFunctionServiceRoleDefaultPolicyE7A220DD",
+    "UpdateSubscriptionFunctionServiceRoleC189340B"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/UpdateSubscriptionFunction/Resource",
+    "aws:asset:path": "asset.432a56a489b7e6ad9494678493f7f89f7db62e39b21d5db92cde00768990d5b9",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "CancelSubscriptionFunctionServiceRoleEE09FB96": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/CancelSubscriptionFunction/ServiceRole/Resource"
+   }
+  },
+  "CancelSubscriptionFunctionServiceRoleDefaultPolicyDC468E4A": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:DeleteItem",
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:dynamodb:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":table/UserDetailsStack-UsersTable9725E9C8-1ULUFCS7DFRJM"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CancelSubscriptionFunctionServiceRoleDefaultPolicyDC468E4A",
+    "Roles": [
+     {
+      "Ref": "CancelSubscriptionFunctionServiceRoleEE09FB96"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/CancelSubscriptionFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "CancelSubscriptionFunction88525669": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "8fb435be813aa778c6755901cc6092a81d05e23ba2c50de817e87de5d2541021.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "USERS_TABLE_NAME": "UserDetailsStack-UsersTable9725E9C8-1ULUFCS7DFRJM"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "CancelSubscriptionFunctionServiceRoleEE09FB96",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Timeout": 30
+   },
+   "DependsOn": [
+    "CancelSubscriptionFunctionServiceRoleDefaultPolicyDC468E4A",
+    "CancelSubscriptionFunctionServiceRoleEE09FB96"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/CancelSubscriptionFunction/Resource",
+    "aws:asset:path": "asset.8fb435be813aa778c6755901cc6092a81d05e23ba2c50de817e87de5d2541021",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "CheckSubscriptionFunctionServiceRole1DDFA2C6": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/CheckSubscriptionFunction/ServiceRole/Resource"
+   }
+  },
+  "CheckSubscriptionFunctionServiceRoleDefaultPolicyA2D8BD86": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:dynamodb:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":table/UserDetailsStack-UsersTable9725E9C8-1ULUFCS7DFRJM"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CheckSubscriptionFunctionServiceRoleDefaultPolicyA2D8BD86",
+    "Roles": [
+     {
+      "Ref": "CheckSubscriptionFunctionServiceRole1DDFA2C6"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/CheckSubscriptionFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "CheckSubscriptionFunctionA33705F2": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "4edc23ddc2034f3d36e32d0df6f5db429686c68fb210a1551b3e49dab853b498.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "USERS_TABLE_NAME": "UserDetailsStack-UsersTable9725E9C8-1ULUFCS7DFRJM"
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "CheckSubscriptionFunctionServiceRole1DDFA2C6",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Timeout": 30
+   },
+   "DependsOn": [
+    "CheckSubscriptionFunctionServiceRoleDefaultPolicyA2D8BD86",
+    "CheckSubscriptionFunctionServiceRole1DDFA2C6"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/CheckSubscriptionFunction/Resource",
+    "aws:asset:path": "asset.4edc23ddc2034f3d36e32d0df6f5db429686c68fb210a1551b3e49dab853b498",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "SubscriptionApi547C4F95": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "Subscription Service API"
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Resource"
+   }
+  },
+  "SubscriptionApiDeployment0D39877Cedf992b9bcddea56531ad6e3fa949982": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "Automatically created by the RestApi construct",
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "DependsOn": [
+    "SubscriptionApichecksubscriptionOPTIONS82B3CF9E",
+    "SubscriptionApichecksubscriptionPOSTEF3DBF67",
+    "SubscriptionApichecksubscriptionAA562910",
+    "SubscriptionApidownloadsOPTIONS1431DBC9",
+    "SubscriptionApidownloadsPOST030A8B26",
+    "SubscriptionApidownloadsE9B9B140",
+    "SubscriptionApiOPTIONSC7FCDED9",
+    "SubscriptionApisubscriptioncancelOPTIONSD27975ED",
+    "SubscriptionApisubscriptioncancelPOSTA41F7927",
+    "SubscriptionApisubscriptioncancel32738483",
+    "SubscriptionApisubscriptionOPTIONS76459C18",
+    "SubscriptionApisubscriptionPOSTAF2CC7FC",
+    "SubscriptionApisubscription83FBB1E7"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Deployment/Resource"
+   }
+  },
+  "SubscriptionApiDeploymentStageprod6E0A21FB": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "SubscriptionApiDeployment0D39877Cedf992b9bcddea56531ad6e3fa949982"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    },
+    "StageName": "prod"
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/DeploymentStage.prod/Resource"
+   }
+  },
+  "SubscriptionApiOPTIONSC7FCDED9": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'",
+        "method.response.header.Access-Control-Max-Age": "'86400'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Max-Age": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "SubscriptionApi547C4F95",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/OPTIONS/Resource"
+   }
+  },
+  "SubscriptionApidownloadsE9B9B140": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "SubscriptionApi547C4F95",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "downloads",
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/downloads/Resource"
+   }
+  },
+  "SubscriptionApidownloadsOPTIONS1431DBC9": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'",
+        "method.response.header.Access-Control-Max-Age": "'86400'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Max-Age": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "SubscriptionApidownloadsE9B9B140"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/downloads/OPTIONS/Resource"
+   }
+  },
+  "SubscriptionApidownloadsPOSTApiPermissionUtilsStackSubscriptionApi7F379193POSTdownloads82D2691F": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "UpdateDownloadsFunctionF3C2D957",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "SubscriptionApi547C4F95"
+       },
+       "/",
+       {
+        "Ref": "SubscriptionApiDeploymentStageprod6E0A21FB"
+       },
+       "/POST/downloads"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/downloads/POST/ApiPermission.UtilsStackSubscriptionApi7F379193.POST..downloads"
+   }
+  },
+  "SubscriptionApidownloadsPOSTApiPermissionTestUtilsStackSubscriptionApi7F379193POSTdownloadsD6D4FD90": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "UpdateDownloadsFunctionF3C2D957",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "SubscriptionApi547C4F95"
+       },
+       "/test-invoke-stage/POST/downloads"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/downloads/POST/ApiPermission.Test.UtilsStackSubscriptionApi7F379193.POST..downloads"
+   }
+  },
+  "SubscriptionApidownloadsPOST030A8B26": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Origin": "'*'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "UpdateDownloadsFunctionF3C2D957",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "SubscriptionApidownloadsE9B9B140"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/downloads/POST/Resource"
+   }
+  },
+  "SubscriptionApisubscription83FBB1E7": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "SubscriptionApi547C4F95",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "subscription",
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/Resource"
+   }
+  },
+  "SubscriptionApisubscriptionOPTIONS76459C18": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'",
+        "method.response.header.Access-Control-Max-Age": "'86400'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Max-Age": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "SubscriptionApisubscription83FBB1E7"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/OPTIONS/Resource"
+   }
+  },
+  "SubscriptionApisubscriptioncancel32738483": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "SubscriptionApisubscription83FBB1E7"
+    },
+    "PathPart": "cancel",
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/cancel/Resource"
+   }
+  },
+  "SubscriptionApisubscriptioncancelOPTIONSD27975ED": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'",
+        "method.response.header.Access-Control-Max-Age": "'86400'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Max-Age": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "SubscriptionApisubscriptioncancel32738483"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/cancel/OPTIONS/Resource"
+   }
+  },
+  "SubscriptionApisubscriptioncancelPOSTApiPermissionUtilsStackSubscriptionApi7F379193POSTsubscriptioncancel222CACC6": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CancelSubscriptionFunction88525669",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "SubscriptionApi547C4F95"
+       },
+       "/",
+       {
+        "Ref": "SubscriptionApiDeploymentStageprod6E0A21FB"
+       },
+       "/POST/subscription/cancel"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/cancel/POST/ApiPermission.UtilsStackSubscriptionApi7F379193.POST..subscription.cancel"
+   }
+  },
+  "SubscriptionApisubscriptioncancelPOSTApiPermissionTestUtilsStackSubscriptionApi7F379193POSTsubscriptioncancel96B0A0B0": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CancelSubscriptionFunction88525669",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "SubscriptionApi547C4F95"
+       },
+       "/test-invoke-stage/POST/subscription/cancel"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/cancel/POST/ApiPermission.Test.UtilsStackSubscriptionApi7F379193.POST..subscription.cancel"
+   }
+  },
+  "SubscriptionApisubscriptioncancelPOSTA41F7927": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Origin": "'*'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "CancelSubscriptionFunction88525669",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "SubscriptionApisubscriptioncancel32738483"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/cancel/POST/Resource"
+   }
+  },
+  "SubscriptionApisubscriptionPOSTApiPermissionUtilsStackSubscriptionApi7F379193POSTsubscriptionDD462655": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "UpdateSubscriptionFunction72CE7B77",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "SubscriptionApi547C4F95"
+       },
+       "/",
+       {
+        "Ref": "SubscriptionApiDeploymentStageprod6E0A21FB"
+       },
+       "/POST/subscription"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/POST/ApiPermission.UtilsStackSubscriptionApi7F379193.POST..subscription"
+   }
+  },
+  "SubscriptionApisubscriptionPOSTApiPermissionTestUtilsStackSubscriptionApi7F379193POSTsubscription91550F6C": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "UpdateSubscriptionFunction72CE7B77",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "SubscriptionApi547C4F95"
+       },
+       "/test-invoke-stage/POST/subscription"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/POST/ApiPermission.Test.UtilsStackSubscriptionApi7F379193.POST..subscription"
+   }
+  },
+  "SubscriptionApisubscriptionPOSTAF2CC7FC": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Origin": "'*'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "UpdateSubscriptionFunction72CE7B77",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "SubscriptionApisubscription83FBB1E7"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/subscription/POST/Resource"
+   }
+  },
+  "SubscriptionApichecksubscriptionAA562910": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "SubscriptionApi547C4F95",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "check-subscription",
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/check-subscription/Resource"
+   }
+  },
+  "SubscriptionApichecksubscriptionOPTIONS82B3CF9E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'",
+        "method.response.header.Access-Control-Max-Age": "'86400'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Max-Age": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "SubscriptionApichecksubscriptionAA562910"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/check-subscription/OPTIONS/Resource"
+   }
+  },
+  "SubscriptionApichecksubscriptionPOSTApiPermissionUtilsStackSubscriptionApi7F379193POSTchecksubscription72846282": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CheckSubscriptionFunctionA33705F2",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "SubscriptionApi547C4F95"
+       },
+       "/",
+       {
+        "Ref": "SubscriptionApiDeploymentStageprod6E0A21FB"
+       },
+       "/POST/check-subscription"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/check-subscription/POST/ApiPermission.UtilsStackSubscriptionApi7F379193.POST..check-subscription"
+   }
+  },
+  "SubscriptionApichecksubscriptionPOSTApiPermissionTestUtilsStackSubscriptionApi7F379193POSTchecksubscription13A42B92": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CheckSubscriptionFunctionA33705F2",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "SubscriptionApi547C4F95"
+       },
+       "/test-invoke-stage/POST/check-subscription"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/check-subscription/POST/ApiPermission.Test.UtilsStackSubscriptionApi7F379193.POST..check-subscription"
+   }
+  },
+  "SubscriptionApichecksubscriptionPOSTEF3DBF67": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Origin": "'*'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "CheckSubscriptionFunctionA33705F2",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "SubscriptionApichecksubscriptionAA562910"
+    },
+    "RestApiId": {
+     "Ref": "SubscriptionApi547C4F95"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/SubscriptionApi/Default/check-subscription/POST/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02PzW6DQAyEnyV3cEmRek9S9VYVkd4jA27isD8IGyGEePdqF6pymm89o/H6FY5vGWQHHCWtmzY1XMF8VazbBEe5zc3k0Pqmgm+sDJ1RKDFoqwZh/hhcrexdcvlxey6otyzC3i0Jo4W59IaCEbXwhusp5iItieQ3FCEVOAVJJIfzULekcRt2fEelESeYSxI9dRy7NnynzvjJktMw3b2uive4dYWSxA99vV7wSfrwTTA3+nO35sjL8j+OHwtF7O4h8zVoN+g+HfjiXcMa7y4mfXj3ksMxh+zwFOa0H5yyJShX/QWfnqoqeQEAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "UtilsStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "SubscriptionApiEndpointC8C6297F": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "SubscriptionApi547C4F95"
+      },
+      ".execute-api.",
+      {
+       "Ref": "AWS::Region"
+      },
+      ".",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "SubscriptionApiDeploymentStageprod6E0A21FB"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "ApiUrl": {
+   "Description": "API Gateway endpoint URL",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "SubscriptionApi547C4F95"
+      },
+      ".execute-api.",
+      {
+       "Ref": "AWS::Region"
+      },
+      ".",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "SubscriptionApiDeploymentStageprod6E0A21FB"
+      },
+      "/"
+     ]
+    ]
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

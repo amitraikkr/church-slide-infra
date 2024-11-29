@@ -1,0 +1,162 @@
+{
+  "version": "38.0.1",
+  "artifacts": {
+    "SlideGenerateStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "SlideGenerateStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "SlideGenerateStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "SlideGenerateStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "notificationArns": [],
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9d7f18f6b941eaba7e34ea54af539e774fbe13dd00df36fe00e5e8bd9348bc55.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "SlideGenerateStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "SlideGenerateStack.assets"
+      ],
+      "metadata": {
+        "/SlideGenerateStack/ChurchFaithSlideAIPPTs/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ChurchFaithSlideAIPPTs9F18503E"
+          }
+        ],
+        "/SlideGenerateStack/SlideAITemplates/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SlideAITemplatesB2008910"
+          }
+        ],
+        "/SlideGenerateStack/PresentationGeneratorFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationGeneratorFunctionServiceRoleC7B55338"
+          }
+        ],
+        "/SlideGenerateStack/PresentationGeneratorFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationGeneratorFunctionServiceRoleDefaultPolicyE4C8C24A"
+          }
+        ],
+        "/SlideGenerateStack/PresentationGeneratorFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationGeneratorFunctionBF8AB408"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIEC0C6624"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIDeployment9D8A00BE8798f1b654a57e421b62e18db138f408"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIDeploymentStageprod8370C2DD"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIEndpoint1C32277C"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIOPTIONSCC243B21"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Default/presentation/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationEEFC2154"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Default/presentation/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationOPTIONS88DE1248"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Default/presentation/POST/ApiPermission.SlideGenerateStackPresentationAPI31675C4F.POST..presentation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationPOSTApiPermissionSlideGenerateStackPresentationAPI31675C4FPOSTpresentation21C3BA1A"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Default/presentation/POST/ApiPermission.Test.SlideGenerateStackPresentationAPI31675C4F.POST..presentation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationPOSTApiPermissionTestSlideGenerateStackPresentationAPI31675C4FPOSTpresentationC849DAB6"
+          }
+        ],
+        "/SlideGenerateStack/PresentationAPI/Default/presentation/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationPOST19927FC0"
+          }
+        ],
+        "/SlideGenerateStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/SlideGenerateStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/SlideGenerateStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/SlideGenerateStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "SlideGenerateStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "version": "38.0.1",
+  "artifacts": {
+    "UtilsStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "UtilsStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "UtilsStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "UtilsStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "notificationArns": [],
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/725b92cff8599e75407cf1b649e7db368b2b32e5195e5a71401a6dd4bfc1a962.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "UtilsStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "UtilsStack.assets"
+      ],
+      "metadata": {
+        "/UtilsStack/UpdateDownloadsFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateDownloadsFunctionServiceRoleA9B70BE5"
+          }
+        ],
+        "/UtilsStack/UpdateDownloadsFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateDownloadsFunctionServiceRoleDefaultPolicy02CC0A2C"
+          }
+        ],
+        "/UtilsStack/UpdateDownloadsFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateDownloadsFunctionF3C2D957"
+          }
+        ],
+        "/UtilsStack/UpdateSubscriptionFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateSubscriptionFunctionServiceRoleC189340B"
+          }
+        ],
+        "/UtilsStack/UpdateSubscriptionFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateSubscriptionFunctionServiceRoleDefaultPolicyE7A220DD"
+          }
+        ],
+        "/UtilsStack/UpdateSubscriptionFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "UpdateSubscriptionFunction72CE7B77"
+          }
+        ],
+        "/UtilsStack/CancelSubscriptionFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CancelSubscriptionFunctionServiceRoleEE09FB96"
+          }
+        ],
+        "/UtilsStack/CancelSubscriptionFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CancelSubscriptionFunctionServiceRoleDefaultPolicyDC468E4A"
+          }
+        ],
+        "/UtilsStack/CancelSubscriptionFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CancelSubscriptionFunction88525669"
+          }
+        ],
+        "/UtilsStack/CheckSubscriptionFunction/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckSubscriptionFunctionServiceRole1DDFA2C6"
+          }
+        ],
+        "/UtilsStack/CheckSubscriptionFunction/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckSubscriptionFunctionServiceRoleDefaultPolicyA2D8BD86"
+          }
+        ],
+        "/UtilsStack/CheckSubscriptionFunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckSubscriptionFunctionA33705F2"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApi547C4F95"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApiDeployment0D39877Cedf992b9bcddea56531ad6e3fa949982"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApiDeploymentStageprod6E0A21FB"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApiEndpointC8C6297F"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApiOPTIONSC7FCDED9"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/downloads/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApidownloadsE9B9B140"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/downloads/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApidownloadsOPTIONS1431DBC9"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/downloads/POST/ApiPermission.UtilsStackSubscriptionApi7F379193.POST..downloads": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApidownloadsPOSTApiPermissionUtilsStackSubscriptionApi7F379193POSTdownloads82D2691F"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/downloads/POST/ApiPermission.Test.UtilsStackSubscriptionApi7F379193.POST..downloads": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApidownloadsPOSTApiPermissionTestUtilsStackSubscriptionApi7F379193POSTdownloadsD6D4FD90"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/downloads/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApidownloadsPOST030A8B26"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscription83FBB1E7"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptionOPTIONS76459C18"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/cancel/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptioncancel32738483"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/cancel/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptioncancelOPTIONSD27975ED"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/cancel/POST/ApiPermission.UtilsStackSubscriptionApi7F379193.POST..subscription.cancel": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptioncancelPOSTApiPermissionUtilsStackSubscriptionApi7F379193POSTsubscriptioncancel222CACC6"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/cancel/POST/ApiPermission.Test.UtilsStackSubscriptionApi7F379193.POST..subscription.cancel": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptioncancelPOSTApiPermissionTestUtilsStackSubscriptionApi7F379193POSTsubscriptioncancel96B0A0B0"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/cancel/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptioncancelPOSTA41F7927"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/POST/ApiPermission.UtilsStackSubscriptionApi7F379193.POST..subscription": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptionPOSTApiPermissionUtilsStackSubscriptionApi7F379193POSTsubscriptionDD462655"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/POST/ApiPermission.Test.UtilsStackSubscriptionApi7F379193.POST..subscription": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptionPOSTApiPermissionTestUtilsStackSubscriptionApi7F379193POSTsubscription91550F6C"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/subscription/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApisubscriptionPOSTAF2CC7FC"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/check-subscription/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApichecksubscriptionAA562910"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/check-subscription/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApichecksubscriptionOPTIONS82B3CF9E"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/check-subscription/POST/ApiPermission.UtilsStackSubscriptionApi7F379193.POST..check-subscription": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApichecksubscriptionPOSTApiPermissionUtilsStackSubscriptionApi7F379193POSTchecksubscription72846282"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/check-subscription/POST/ApiPermission.Test.UtilsStackSubscriptionApi7F379193.POST..check-subscription": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApichecksubscriptionPOSTApiPermissionTestUtilsStackSubscriptionApi7F379193POSTchecksubscription13A42B92"
+          }
+        ],
+        "/UtilsStack/SubscriptionApi/Default/check-subscription/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SubscriptionApichecksubscriptionPOSTEF3DBF67"
+          }
+        ],
+        "/UtilsStack/ApiUrl": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ApiUrl"
+          }
+        ],
+        "/UtilsStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/UtilsStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/UtilsStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/UtilsStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "UtilsStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

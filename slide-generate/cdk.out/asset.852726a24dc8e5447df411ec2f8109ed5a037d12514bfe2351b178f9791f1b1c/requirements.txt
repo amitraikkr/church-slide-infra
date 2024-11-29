@@ -1,0 +1,3 @@
+python-pptx
+boto3
+lxml

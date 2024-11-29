@@ -1,0 +1,144 @@
+{
+  "version": "38.0.1",
+  "artifacts": {
+    "OpenaiApiStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "OpenaiApiStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "OpenaiApiStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "OpenaiApiStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "notificationArns": [],
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2c795bf15dbc0fcd7c69c4fb4f1acbed27f425f12464bc111c3d1e90374d5d2a.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "OpenaiApiStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "OpenaiApiStack.assets"
+      ],
+      "metadata": {
+        "/OpenaiApiStack/PresentationGenerator/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationGeneratorServiceRole9AEBD783"
+          }
+        ],
+        "/OpenaiApiStack/PresentationGenerator/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationGenerator1A6BBABE"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIEC0C6624"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIDeployment9D8A00BE14f801fa3a953a738f46f005c62709e5"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIDeploymentStageprod8370C2DD"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIEndpoint1C32277C"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Default/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIOPTIONSCC243B21"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Default/presentation/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationEEFC2154"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Default/presentation/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationOPTIONS88DE1248"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Default/presentation/POST/ApiPermission.OpenaiApiStackPresentationAPID7E43A68.POST..presentation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationPOSTApiPermissionOpenaiApiStackPresentationAPID7E43A68POSTpresentation88AFB6D9"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Default/presentation/POST/ApiPermission.Test.OpenaiApiStackPresentationAPID7E43A68.POST..presentation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationPOSTApiPermissionTestOpenaiApiStackPresentationAPID7E43A68POSTpresentationCE446F2D"
+          }
+        ],
+        "/OpenaiApiStack/PresentationAPI/Default/presentation/POST/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PresentationAPIpresentationPOST19927FC0"
+          }
+        ],
+        "/OpenaiApiStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/OpenaiApiStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/OpenaiApiStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/OpenaiApiStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "OpenaiApiStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

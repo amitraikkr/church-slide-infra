@@ -1,0 +1,32 @@
+{
+  "version": "38.0.1",
+  "files": {
+    "2f56d2b09618a6207bb8765c9be9933bd103871c7f52ac835ff76b35bed02d3e": {
+      "source": {
+        "path": "asset.2f56d2b09618a6207bb8765c9be9933bd103871c7f52ac835ff76b35bed02d3e",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "2f56d2b09618a6207bb8765c9be9933bd103871c7f52ac835ff76b35bed02d3e.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "2c795bf15dbc0fcd7c69c4fb4f1acbed27f425f12464bc111c3d1e90374d5d2a": {
+      "source": {
+        "path": "OpenaiApiStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "2c795bf15dbc0fcd7c69c4fb4f1acbed27f425f12464bc111c3d1e90374d5d2a.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

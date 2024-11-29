@@ -1,0 +1,19 @@
+{
+  "version": "38.0.1",
+  "files": {
+    "325ed4180b42b275d3712f0c2ca1a711faaed8b673713e1089555156b84bba28": {
+      "source": {
+        "path": "AwsCognitoStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "325ed4180b42b275d3712f0c2ca1a711faaed8b673713e1089555156b84bba28.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
